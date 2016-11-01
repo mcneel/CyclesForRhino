@@ -17,18 +17,26 @@ limitations under the License.
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Rhino.PlugIns;
+using Rhino;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Cycles for Rhino")]
 [assembly: AssemblyDescription("Cycles for Rhino")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+#if DEBUG
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif
+[assembly: AssemblyCompany("Robert McNeel and Associates")]
 [assembly: AssemblyProduct("CyclesForRhino")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: AssemblyVersion("0.0.8")]
+[assembly: AssemblyFileVersion("0.0.8")]
+[assembly: AssemblyInformationalVersion("Cycles for Rhino 0.0.8")]
 
 // Plug-in Description Attributes - all of these are optional
 [assembly: PlugInDescription(DescriptionType.Address, "-")]
