@@ -19,6 +19,14 @@ namespace CyclesForRhino.CyclesForRhino
 
 		private Label _activeViewIsRaytraced;
 
+		public override System.Guid PlugInId
+		{
+			get
+			{
+				var id = Plugin.IdFromName("Cycles for Rhino");
+				return id;
+			}
+		}
 
 		public RenderEngineSettings()
 		{
