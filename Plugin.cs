@@ -121,7 +121,7 @@ namespace CyclesForRhino.CyclesForRhino
 
 			//InitialiseCSycles();
 
-			if (scene.Quality == PreviewSceneQuality.RealtimeQuick)
+			if (scene.Quality == PreviewSceneQuality.Low)
 			{
 				scene.PreviewImage = null;
 				return;
@@ -131,7 +131,7 @@ namespace CyclesForRhino.CyclesForRhino
 			var engine = (PreviewRenderEngine)a_rc;
 			engine.Settings = RcCore.It.EngineSettings;
 			engine.Settings.IgnoreQualityChanges = true;
-			engine.Settings.SetQuality(PreviewSceneQuality.RefineThirdPass);
+			engine.Settings.SetQuality(PreviewSceneQuality.Full);
 
 			engine.RenderDimension = scene.PreviewImageSize;
 			/* create a window-less, non-document controlled render window */
