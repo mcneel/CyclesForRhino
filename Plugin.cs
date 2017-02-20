@@ -148,9 +148,9 @@ namespace CyclesForRhino.CyclesForRhino
 			/* set final preview bitmap, or null if cancelled */
 			scene.PreviewImage = engine.RenderWindow.GetBitmap();
 
-#if DEBUGX
-			var prev = string.Format("{0}\\{1}.jpg", System.Environment.GetEnvironmentVariable("TEMP"), "previmg");
-			scene.PreviewImage.Save(prev, ImageFormat.Jpeg);
+#if DEBUG
+			var prev =$"{Environment.GetEnvironmentVariable("TEMP")}\\previmg.jpg";
+			scene.PreviewImage.Save(prev, System.Drawing.Imaging.ImageFormat.Jpeg);
 #endif
 		}
 
