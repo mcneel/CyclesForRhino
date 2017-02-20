@@ -13,9 +13,9 @@ namespace CyclesForRhino.CyclesForRhino
 
 		private Label _sampleLabel;
 		private NumericMaskedTextBox<int>_sample;
-		private NumericUpDown _sampleInput;
+		private NumericStepper _sampleInput;
 		private Label _seedLabel;
-		private NumericUpDown _seedInput;
+		private NumericStepper _seedInput;
 
 		private Label _activeViewIsRaytraced;
 
@@ -43,7 +43,7 @@ namespace CyclesForRhino.CyclesForRhino
 				Text = "Samples",
 				VerticalAlignment = VerticalAlignment.Center
 			};
-			_sampleInput = new NumericUpDown()
+			_sampleInput = new NumericStepper()
 			{
 				Increment = 1,
 				MaxValue = 500000,
@@ -59,7 +59,7 @@ namespace CyclesForRhino.CyclesForRhino
 				VerticalAlignment = VerticalAlignment.Center
 			};
 
-			_seedInput = new NumericUpDown()
+			_seedInput = new NumericStepper()
 			{
 				Increment = 1,
 				MaxValue = 500000,
