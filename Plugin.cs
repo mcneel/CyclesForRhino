@@ -67,18 +67,8 @@ namespace CyclesForRhino.CyclesForRhino
 		protected override Result Render(RhinoDoc doc, RunMode mode, bool fastPreview)
 		{
 			//AsyncRenderContext a_rc = new RhinoCycles.ModalRenderEngine(doc, Id);
-			ModalRenderEngine engine = new ModalRenderEngine(doc, Id) {Settings = RcCore.It.EngineSettings};
+			ModalRenderEngine engine = new ModalRenderEngine(doc, Id);
 
-			engine.Settings.UseInteractiveRenderer = false;
-			engine.Settings.SetQuality(doc.RenderSettings.AntialiasLevel);
-
-			/* render only 3 samples if we are told to generate a fast preview. */
-			if (fastPreview)
-			{
-				engine.Settings.Samples = 3;
-			}
-			// for now when using interactive renderer render indefinitely
-			if (engine.Settings.UseInteractiveRenderer) engine.Settings.Samples = ushort.MaxValue;
 			var renderSize = Rhino.Render.RenderPipeline.RenderSize(doc);
 
 			var pipe = new RhinoCycles.RenderPipeline(doc, mode, this, engine);
@@ -87,7 +77,6 @@ namespace CyclesForRhino.CyclesForRhino
 			engine.RenderDimension = renderSize;
 			engine.Database.RenderDimension = renderSize;
 
-			engine.Settings.Verbose = true;
 			engine.SetFloatTextureAsByteTexture(false); // engine.Settings.RenderDeviceIsOpenCl);
 
 			engine.CreateWorld(); // has to be done on main thread, so lets do this just before starting render session
@@ -129,9 +118,6 @@ namespace CyclesForRhino.CyclesForRhino
 
 			AsyncRenderContext a_rc = new PreviewRenderEngine(scene, Id);
 			var engine = (PreviewRenderEngine)a_rc;
-			engine.Settings = RcCore.It.EngineSettings;
-			engine.Settings.IgnoreQualityChanges = true;
-			engine.Settings.SetQuality(PreviewSceneQuality.Full);
 
 			engine.RenderDimension = scene.PreviewImageSize;
 			/* create a window-less, non-document controlled render window */
