@@ -77,7 +77,7 @@ namespace CyclesForRhino.CyclesForRhino
 			engine.RenderDimension = renderSize;
 			engine.Database.RenderDimension = renderSize;
 
-			engine.SetFloatTextureAsByteTexture(false); // engine.Settings.RenderDeviceIsOpenCl);
+			engine.SetFloatTextureAsByteTexture(false);
 
 			engine.CreateWorld(); // has to be done on main thread, so lets do this just before starting render session
 
@@ -108,8 +108,6 @@ namespace CyclesForRhino.CyclesForRhino
 		{
 			scene.SkipInitialisation();
 
-			//InitialiseCSycles();
-
 			if (scene.Quality == PreviewSceneQuality.Low)
 			{
 				scene.PreviewImage = null;
@@ -124,7 +122,7 @@ namespace CyclesForRhino.CyclesForRhino
 			engine.RenderWindow = Rhino.Render.RenderWindow.Create(scene.PreviewImageSize);
 			engine.Database.RenderDimension = engine.RenderDimension;
 
-			engine.SetFloatTextureAsByteTexture(false); // engine.Settings.RenderDeviceIsOpenCl);
+			engine.SetFloatTextureAsByteTexture(false);
 
 			engine.CreateWorld();
 
