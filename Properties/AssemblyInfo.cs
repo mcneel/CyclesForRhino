@@ -33,9 +33,9 @@ using Rhino.PlugIns;
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("0.1.1")]
-[assembly: AssemblyFileVersion("0.1.1")]
-[assembly: AssemblyInformationalVersion("Cycles for Rhino 0.1.1")]
+[assembly: AssemblyVersion("0.1.2")]
+[assembly: AssemblyFileVersion("0.1.2")]
+[assembly: AssemblyInformationalVersion("Cycles for Rhino 0.1.2")]
 
 // Plug-in Description Attributes - all of these are optional
 [assembly: PlugInDescription(DescriptionType.Address, "-")]
