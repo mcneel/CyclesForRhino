@@ -30,10 +30,8 @@ namespace CyclesForRhino.CyclesForRhino
 {
 	public class Plugin : RenderPlugIn
 	{
-		private RenderEngineSettings _rengSettings;
 		protected override LoadReturnCode OnLoad(ref string errorMessage)
 		{
-			_rengSettings = new RenderEngineSettings();
 			RhinoApp.WriteLine("Cycles for Rhino ready.");
 			return LoadReturnCode.Success;
 		}
@@ -136,11 +134,6 @@ namespace CyclesForRhino.CyclesForRhino
 			var prev =$"{Environment.GetEnvironmentVariable("TEMP")}\\previmg.jpg";
 			scene.PreviewImage.Save(prev, System.Drawing.Imaging.ImageFormat.Jpeg);
 #endif
-		}
-
-		public override void RenderSettingsCustomSections(List<ICollapsibleSection> sections)
-		{
-			sections.Add(_rengSettings);
 		}
 	}
 }
