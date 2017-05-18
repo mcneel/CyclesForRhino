@@ -15,25 +15,34 @@ limitations under the License.
 **/
 
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using Rhino;
 using Rhino.Commands;
 using Rhino.Display;
 using Rhino.PlugIns;
 using Rhino.Render;
-using Rhino.UI.Controls;
-using RhinoCyclesCore.Core;
 using RhinoCyclesCore.RenderEngines;
 
 namespace CyclesForRhino.CyclesForRhino
 {
 	public class Plugin : RenderPlugIn
 	{
+		public override PlugInLoadTime LoadTime =>
+			RhinoApp.InstallationTypeString.Equals("WIP")
+			? PlugInLoadTime.WhenNeeded
+			: PlugInLoadTime.Disabled;
+
 		protected override LoadReturnCode OnLoad(ref string errorMessage)
 		{
-			RhinoApp.WriteLine("Cycles for Rhino ready.");
-			return LoadReturnCode.Success;
+			var iswip = RhinoApp.InstallationTypeString.Equals("WIP");
+			if (iswip) {
+				RhinoApp.WriteLine("Cycles for Rhino ready.");
+			} else
+			{
+				errorMessage = "Cycles for Rhino works only with the WIP.";
+				RhinoApp.WriteLine(errorMessage);
+			}
+			return iswip ? LoadReturnCode.Success : LoadReturnCode.ErrorShowDialog;
 		}
 		protected override bool SupportsFeature(RenderFeature feature)
 		{
@@ -64,8 +73,19 @@ namespace CyclesForRhino.CyclesForRhino
 		/// <returns></returns>
 		protected override Result Render(RhinoDoc doc, RunMode mode, bool fastPreview)
 		{
-			//AsyncRenderContext a_rc = new RhinoCycles.ModalRenderEngine(doc, Id);
-			ModalRenderEngine engine = new ModalRenderEngine(doc, Id);
+			ModalRenderEngine engine = null;
+			try
+			{
+				engine = new ModalRenderEngine(doc, Id);
+			} catch(ApplicationException)
+			{
+				engine = null;
+			}
+			if(engine == null || !engine.CanRender)
+			{
+				RhinoApp.WriteLine("Cycles for Rhino cannot render. It works only in WIP.");
+				return Result.Failure;
+			}
 
 			var renderSize = Rhino.Render.RenderPipeline.RenderSize(doc);
 

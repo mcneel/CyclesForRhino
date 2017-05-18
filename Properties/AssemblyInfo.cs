@@ -33,9 +33,9 @@ using Rhino.PlugIns;
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("0.1.2")]
-[assembly: AssemblyFileVersion("0.1.2")]
-[assembly: AssemblyInformationalVersion("Cycles for Rhino 0.1.2")]
+[assembly: AssemblyVersion("0.1.3")]
+[assembly: AssemblyFileVersion("0.1.3")]
+[assembly: AssemblyInformationalVersion("Cycles for Rhino 0.1.3")]
 
 // Plug-in Description Attributes - all of these are optional
 [assembly: PlugInDescription(DescriptionType.Address, "-")]
@@ -44,8 +44,8 @@ using Rhino.PlugIns;
 [assembly: PlugInDescription(DescriptionType.Phone, "-")]
 [assembly: PlugInDescription(DescriptionType.Fax, "-")]
 [assembly: PlugInDescription(DescriptionType.Organization, "McNeel")]
-[assembly: PlugInDescription(DescriptionType.UpdateUrl, "http://www.rhino3d.com/download")]
-[assembly: PlugInDescription(DescriptionType.WebSite, "http://www.rhino3d.com")]
+[assembly: PlugInDescription(DescriptionType.UpdateUrl, "https://github.com/mcneel/CyclesForRhino/releases/latest")]
+[assembly: PlugInDescription(DescriptionType.WebSite, "https://github.com/mcneel/CyclesForRhino/releases/latest")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
