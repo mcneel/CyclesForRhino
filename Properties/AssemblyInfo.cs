@@ -30,7 +30,7 @@ using Rhino.PlugIns;
 #endif
 [assembly: AssemblyCompany("Robert McNeel and Associates")]
 [assembly: AssemblyProduct("CyclesForRhino")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright ©  2016-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("0.1.3")]
