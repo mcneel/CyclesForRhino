@@ -34,7 +34,7 @@ namespace CyclesForRhino.CyclesForRhino
 
 		protected override LoadReturnCode OnLoad(ref string errorMessage)
 		{
-			var shouldi = RhinoApp.InstallationTypeString.Equals("WIP");
+			var shouldi = RhinoApp.InstallationTypeString.Equals("WIP") && CyclesForRhinoConstants.Ok;
 			if (shouldi) {
 				RhinoApp.WriteLine("Cycles for Rhino ready.");
 			} else
