@@ -34,8 +34,8 @@ namespace CyclesForRhino.CyclesForRhino
 
 		protected override LoadReturnCode OnLoad(ref string errorMessage)
 		{
-			var iswip = RhinoApp.InstallationTypeString.Equals("WIP");
-			if (iswip && CyclesForRhinoConstants.Ok) {
+			var shouldi = RhinoApp.InstallationTypeString.Equals("WIP");
+			if (shouldi) {
 				RhinoApp.WriteLine("Cycles for Rhino ready.");
 			} else
 			{
@@ -43,7 +43,7 @@ namespace CyclesForRhino.CyclesForRhino
 				else errorMessage = "Cycles for Rhino works only with the WIP.";
 				RhinoApp.WriteLine(errorMessage);
 			}
-			return iswip ? LoadReturnCode.Success : LoadReturnCode.ErrorShowDialog;
+			return shouldi ? LoadReturnCode.Success : LoadReturnCode.ErrorShowDialog;
 		}
 		protected override bool SupportsFeature(RenderFeature feature)
 		{
