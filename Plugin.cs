@@ -28,18 +28,19 @@ namespace CyclesForRhino.CyclesForRhino
 	public class Plugin : RenderPlugIn
 	{
 		public override PlugInLoadTime LoadTime =>
-			RhinoApp.InstallationTypeString.Equals("WIP")
+			CyclesForRhinoConstants.Ok && RhinoApp.InstallationTypeString.Equals("WIP")
 			? PlugInLoadTime.WhenNeeded
 			: PlugInLoadTime.Disabled;
 
 		protected override LoadReturnCode OnLoad(ref string errorMessage)
 		{
 			var iswip = RhinoApp.InstallationTypeString.Equals("WIP");
-			if (iswip) {
+			if (iswip && CyclesForRhinoConstants.Ok) {
 				RhinoApp.WriteLine("Cycles for Rhino ready.");
 			} else
 			{
-				errorMessage = "Cycles for Rhino works only with the WIP.";
+				if (!CyclesForRhinoConstants.Ok) errorMessage = "Cycles for Rhino is too old, get a newer version from https://github.com/mcneel/CyclesForRhino/releases/latest";
+				else errorMessage = "Cycles for Rhino works only with the WIP.";
 				RhinoApp.WriteLine(errorMessage);
 			}
 			return iswip ? LoadReturnCode.Success : LoadReturnCode.ErrorShowDialog;

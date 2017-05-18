@@ -18,7 +18,7 @@ public static class CyclesForRhinoConstants
 			DateTime dt = new DateTime(yr, 1, 1);
 			dt = dt.AddDays(dyr);
 
-			rc = dt < DateTime.Now;
+			rc = dt > DateTime.Now;
 
 			return rc;
 		}
